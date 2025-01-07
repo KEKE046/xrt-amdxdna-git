@@ -1,5 +1,5 @@
 pkgname='xrt-amdxdna-git'
-pkgver=1.0
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="XDNA driver and XRT"
 arch=('x86_64')
@@ -18,6 +18,35 @@ source=(
     "aiebu::git+https://github.com/Xilinx/aiebu"
     "aie-rt::git+https://github.com/Xilinx/aie-rt"
 )
+depends=(
+    boost
+    opencl-headers
+    dkms
+    elfutils
+    libdrm
+    libffi
+    libjpeg-turbo
+    libtiff
+    libyaml
+    ncurses
+    ocl-icd
+    openssl
+    pciutils
+    perl
+    pkgconf
+    protobuf
+    python3
+    rapidjson
+    strace
+    unzip
+    systemtap
+    zlib
+)
+makedepends=(
+    git
+    cmake
+    curl
+)
 sha256sums=('5ba1d1d1fb8c3d8b898d03c30e1a94afc069dd8f70e87821e2146c5a821095b4'
             '84dca17e271b310ed445d9e4f65a4978598d3d6101da99ed16d8e266532ee9be'
             'f775d9544175c5991601954552452f401c12a47f9176dee7af40ec907f37f6e4'
@@ -32,8 +61,8 @@ sha256sums=('5ba1d1d1fb8c3d8b898d03c30e1a94afc069dd8f70e87821e2146c5a821095b4'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/xdna-driver"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/xdna-driver/xrt"
+    grep -oE "^[0-9]+.[0-9]+.[0-9]+" CHANGELOG.rst | head -n1
 }
 
 prepare_submodule() {
