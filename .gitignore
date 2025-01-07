@@ -1,0 +1,7 @@
+/*
+!/99-amdxdna.rules
+!/aie-rt.patch
+!/PKGBUILD
+!/xrt.patch
+!/.github
+!/.gitignore
