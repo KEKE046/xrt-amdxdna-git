@@ -1,0 +1,32 @@
+diff --git a/src/runtime_src/core/common/aiebu b/src/runtime_src/core/common/aiebu
+--- a/src/runtime_src/core/common/aiebu
++++ b/src/runtime_src/core/common/aiebu
+@@ -1 +1 @@
+-Subproject commit a322ef143bc18bd56396fd22c1309cf161aea9f2
++Subproject commit a322ef143bc18bd56396fd22c1309cf161aea9f2-dirty
+diff --git a/src/runtime_src/xocl/core/memory.cpp b/src/runtime_src/xocl/core/memory.cpp
+index 487655b409..e4f41bf3f9 100644
+--- a/src/runtime_src/xocl/core/memory.cpp
++++ b/src/runtime_src/xocl/core/memory.cpp
+@@ -382,7 +382,7 @@ register_destructor_callbacks (memory::memory_callback_type&& cb)
+ 
+ memory::buffer_object_handle
+ image::
+-get_buffer_object(device* device)
++get_buffer_object(device* device, xclbin::memidx_type subidx)
+ {
+   if (auto boh = get_buffer_object_or_null(device))
+     return boh;
+diff --git a/src/runtime_src/xocl/core/memory.h b/src/runtime_src/xocl/core/memory.h
+index aac0eab03b..083bf822cf 100644
+--- a/src/runtime_src/xocl/core/memory.h
++++ b/src/runtime_src/xocl/core/memory.h
+@@ -739,7 +739,7 @@ public:
+   }
+ 
+   virtual buffer_object_handle
+-  get_buffer_object(device* device);
++  get_buffer_object(device* device, xclbin::memidx_type subidx=-1);
+ 
+ private:
+ 
