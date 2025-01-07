@@ -47,6 +47,7 @@ makedepends=(
     git
     cmake
     curl
+    jq
 )
 sha256sums=('5ba1d1d1fb8c3d8b898d03c30e1a94afc069dd8f70e87821e2146c5a821095b4'
             '84dca17e271b310ed445d9e4f65a4978598d3d6101da99ed16d8e266532ee9be'
