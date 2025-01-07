@@ -1,0 +1,23 @@
+diff --git a/src/driver/CMakeLists.txt b/src/driver/CMakeLists.txt
+index 9d174e6..c0efa17 100644
+--- a/src/driver/CMakeLists.txt
++++ b/src/driver/CMakeLists.txt
+@@ -31,9 +31,9 @@ add_custom_command(
+ add_custom_command(
+   OUTPUT ${XDNA_DRV_TGT}
+   COMMENT "Build ${XDNA_DRV_TGT}"
+-  COMMAND $(MAKE) -f ${XDNA_DRV_BLD_SRC}/Makefile BUILD_ROOT_DIR=${XDNA_DRV_BLD_TGT} ${KERNEL_VER} UMQ_HELLO_TEST=${UMQ_HELLO_TEST} ${XDNA_DRV_BLD_FLAGS_MAKE}
+-  COMMAND $(MAKE) -f ${XDNA_DRV_BLD_SRC}/Makefile BUILD_ROOT_DIR=${XDNA_DRV_BLD_TGT} copy_ko
+-  COMMAND $(CMAKE_COMMAND) -E copy ${XDNA_DRV_BLD_TGT}/${XDNA_DRV_TGT} ${XDNA_DRV_PATH}
++  # COMMAND $(MAKE) -f ${XDNA_DRV_BLD_SRC}/Makefile BUILD_ROOT_DIR=${XDNA_DRV_BLD_TGT} ${KERNEL_VER} UMQ_HELLO_TEST=${UMQ_HELLO_TEST} ${XDNA_DRV_BLD_FLAGS_MAKE}
++  # COMMAND $(MAKE) -f ${XDNA_DRV_BLD_SRC}/Makefile BUILD_ROOT_DIR=${XDNA_DRV_BLD_TGT} copy_ko
++  # COMMAND $(CMAKE_COMMAND) -E copy ${XDNA_DRV_BLD_TGT}/${XDNA_DRV_TGT} ${XDNA_DRV_PATH}
+   DEPENDS all_driver_source
+   )
+ add_custom_target(driver ALL DEPENDS ${XDNA_DRV_TGT})
+@@ -108,4 +108,4 @@ install(FILES ${amdxdna_drv_tools}
+   )
+ 
+ # install .ko for testing
+-install(FILES ${XDNA_DRV_PATH} DESTINATION ${XDNA_BIN_DIR}/driver)
++# install(FILES ${XDNA_DRV_PATH} DESTINATION ${XDNA_BIN_DIR}/driver)

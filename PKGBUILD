@@ -8,6 +8,7 @@ source=(
     "99-amdxdna.rules"
     "aie-rt.patch"
     "xrt.patch"
+    "xdna-driver.patch"
     "xdna-driver::git+https://github.com/amd/xdna-driver.git"
     "aie-rt::git+https://github.com/Xilinx/aie-rt"
     "ELFIO::git+https://github.com/serge1/ELFIO"
@@ -40,7 +41,6 @@ depends=(
     rapidjson
     strace
     unzip
-    systemtap
     zlib
 )
 makedepends=(
@@ -50,7 +50,8 @@ makedepends=(
 )
 sha256sums=('5ba1d1d1fb8c3d8b898d03c30e1a94afc069dd8f70e87821e2146c5a821095b4'
             '84dca17e271b310ed445d9e4f65a4978598d3d6101da99ed16d8e266532ee9be'
-            'f775d9544175c5991601954552452f401c12a47f9176dee7af40ec907f37f6e4'
+            'ff685f84205bc1a4def85258b2eb51566c5a36bd3764275047bdaf124a9ab4d8'
+            'ef16e562cbe393ee1f3b85eca5965d8c9dca6611b4596b3c1a9ead5ee002f526'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,6 +82,8 @@ prepare_submodule() {
     git -C "$srcdir/xdna-driver/xrt/src/runtime_src/core/common/aiebu" -c protocol.file.allow=always submodule update --init
     git -C "$srcdir/xdna-driver/xrt/src/runtime_src/core/common/aiebu/lib/aie-rt" apply "$srcdir/aie-rt.patch"
     git -C "$srcdir/xdna-driver/xrt" apply "$srcdir/xrt.patch"
+    echo "Patching xdna-driver"
+    git -C "$srcdir/xdna-driver" apply "$srcdir/xdna-driver.patch"
 }
 
 prepare() {

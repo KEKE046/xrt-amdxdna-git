@@ -1,7 +1,9 @@
 /*
 !/99-amdxdna.rules
 !/aie-rt.patch
-!/PKGBUILD
 !/xrt.patch
+!/xdna-driver.patch
+!/PKGBUILD
 !/.github
 !/.gitignore
+!/README.md

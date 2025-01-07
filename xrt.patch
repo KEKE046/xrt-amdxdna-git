@@ -1,9 +1,3 @@
-diff --git a/src/runtime_src/core/common/aiebu b/src/runtime_src/core/common/aiebu
---- a/src/runtime_src/core/common/aiebu
-+++ b/src/runtime_src/core/common/aiebu
-@@ -1 +1 @@
--Subproject commit a322ef143bc18bd56396fd22c1309cf161aea9f2
-+Subproject commit a322ef143bc18bd56396fd22c1309cf161aea9f2-dirty
 diff --git a/src/runtime_src/xocl/core/memory.cpp b/src/runtime_src/xocl/core/memory.cpp
 index 487655b409..e4f41bf3f9 100644
 --- a/src/runtime_src/xocl/core/memory.cpp
