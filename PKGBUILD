@@ -36,6 +36,7 @@ depends=(
     pkgconf
     protobuf
     python3
+    pybind11
     rapidjson
     strace
     unzip
