@@ -3,7 +3,7 @@ pkgver=2.17.0
 pkgrel=1
 pkgdesc="XDNA driver and XRT"
 arch=('x86_64')
-conflict=('xrt')
+provides=('xrt')
 source=(
     "99-amdxdna.rules"
     "aie-rt.patch"
@@ -84,7 +84,6 @@ prepare_submodule() {
     git -C "$srcdir/xdna-driver/xrt/src/runtime_src/core/common/aiebu" -c protocol.file.allow=always submodule update --init
     git -C "$srcdir/xdna-driver/xrt/src/runtime_src/core/common/aiebu/lib/aie-rt" apply "$srcdir/aie-rt.patch"
     git -C "$srcdir/xdna-driver/xrt" apply "$srcdir/xrt.patch"
-    echo "Patching xdna-driver"
     git -C "$srcdir/xdna-driver" apply "$srcdir/xdna-driver.patch"
 }
 
