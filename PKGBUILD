@@ -102,7 +102,7 @@ build() {
 
 package() {
     cd "$srcdir/xdna-driver/build"
-    bsdtar xvf Release/xrt_plugin.2.19.0_arch-x86_64-amdxdna.deb
+    bsdtar xvf Release/*.deb
     tar xvf data.tar.gz -C "$pkgdir"
     mkdir -p "$pkgdir/usr"
     mv "$pkgdir/lib" "$pkgdir/usr/lib"
@@ -111,10 +111,9 @@ package() {
     tar xvf "$pkgdir/opt/xilinx/xrt/amdxdna/amdxdna.tar.gz" -C "$pkgdir/usr/src/$PACKAGE_NAME-$PACKAGE_VERSION"
     cp "$pkgdir/opt/xilinx/xrt/amdxdna/dkms.conf" "$pkgdir/usr/src/$PACKAGE_NAME-$PACKAGE_VERSION/"
     cd "$srcdir/xdna-driver/xrt/build"
-    tar xvf Release/xrt_202510.2.19.0_--base-.tar.gz -C "$pkgdir"
-    tar xvf Release/xrt_202510.2.19.0_--runtime.tar.gz -C "$pkgdir"
-    tar xvf Release/xrt_202510.2.19.0_--npu.tar.gz -C "$pkgdir"
-    tar xvf Release/xrt_202510.2.19.0_--Runtime.tar.gz -C "$pkgdir"
+    for f in Release/*.tar.gz; do
+        tar xvf $f -C "$pkgdir"
+    done
     install -Dm644 "$srcdir/99-amdxdna.rules" "$pkgdir/etc/udev/rules.d/99-amdxdna.rules"
 }
 
